@@ -1,7 +1,4 @@
 defmodule Orders.Resolvers.Payments do
-  import Ecto.Query
-  import Ecto.Changeset
-
   alias Orders.Repo
   alias Orders.Models.Payment
   alias Orders.Resolvers.Orders
@@ -16,10 +13,9 @@ defmodule Orders.Resolvers.Payments do
 
   def create_payment(%{order_id: order_id, amount: amount} = params) do
     with {:ok, _} <- Orders.update_balance(order_id, amount) do
-      payment =
-        %Payment{}
-        |> Payment.changeset(params)
-        |> Repo.insert!()
+      %Payment{}
+      |> Payment.changeset(params)
+      |> Repo.insert!()
     end
   end
 end

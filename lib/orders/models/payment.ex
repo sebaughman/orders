@@ -1,14 +1,13 @@
 defmodule Orders.Models.Payment do
-  use Ecto.Schema
+  use Orders.Schema
   import Ecto.Changeset
 
   alias Orders.Models.Order
 
-  @primary_key {:id, :id, autogenerate: true}
   schema "payments" do
     field(:amount, :integer)
     field(:note, :string)
-    belongs_to(:order, Order, type: :id)
+    belongs_to(:order, Order, type: :binary_id)
 
     timestamps()
   end

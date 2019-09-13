@@ -1,11 +1,10 @@
 defmodule Orders.Models.Order do
-  use Ecto.Schema
+  use Orders.Schema
   import Ecto.Changeset
 
   alias Orders.Models.Product
   alias Orders.Models.Payment
 
-  @primary_key {:id, :id, autogenerate: true}
   schema "orders" do
     field(:total, :integer)
     field(:balance, :integer)
