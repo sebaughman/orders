@@ -44,11 +44,11 @@ defmodule Orders.Resolvers.Orders do
     |> Repo.preload(:products)
     |> Order.changeset(order_params)
     |> put_assoc(:products, products)
-    |> Repo.insert!()
+    |> Repo.insert()
   end
 
-  def create_order(product_id), do: create_order([product_id])
   def create_order(nil), do: {:error, "must supply at least one product id"}
+  def create_order(product_id), do: create_order([product_id])
 
   defp get_order_params(products) when is_list(products) do
     params =

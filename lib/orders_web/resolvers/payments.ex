@@ -15,7 +15,7 @@ defmodule Orders.Resolvers.Payments do
     with {:ok, _} <- Orders.update_balance(order_id, amount) do
       %Payment{}
       |> Payment.changeset(params)
-      |> Repo.insert!()
+      |> Repo.insert()
     end
   end
 end
