@@ -10,6 +10,7 @@ defmodule Orders.Resolvers.Products do
 
   def get_products(ids) when is_list(ids) do
     query = from(p in Product, where: p.id in ^ids)
+
     Repo.all(query)
   end
 
